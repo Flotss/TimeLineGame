@@ -149,13 +149,10 @@ public class Paquet {
      * @return la carte retire
      */
     public Carte getCarte(int place) {
-        Carte Carte;
-        if (place < this.paquet.length && place > -1) {
-            Carte = this.paquet[place];
-        } else {
-            Carte = null;
-        }
-        return Carte;
+
+        return (place < this.paquet.length && place > -1)
+                    ? this.paquet[place]
+                    : null;
     }
 
 }

@@ -1,5 +1,5 @@
 /**
- * La casse Carte
+ * La classe Carte
  */
 public class Carte {
     private int date;
@@ -15,6 +15,10 @@ public class Carte {
     public Carte(String ligne) {
 
         if (ligne != null) {
+            // L'attribut recto doit etre faux
+            this.recto = false;
+
+
             int i = 0;
             String evenementligne = "";
             // Ajout de tous les caracteres jusqu'a rencontrer ':'
@@ -33,9 +37,7 @@ public class Carte {
                 i++;
             }
             // affectation de l'attribut date
-            this.date = Integer.parseInt(date);
-            // L'attribut recto doit etre faux 
-            this.recto = false;
+            this.date = Integer.parseInt(String.valueOf(date));
         }
     }
 
@@ -45,13 +47,8 @@ public class Carte {
      * @return carteinfo
      */
     public String toString() {
-        String carteinfo;
-        if (!recto) {
-            carteinfo = "??? -> " + this.evenement;
-        } else {
-            carteinfo = this.date + " -> " + this.evenement;
-        }
-        return carteinfo;
+        return (!recto) ? "??? -> " + this.evenement
+                        : this.date + " -> " + this.evenement;
     }
 
     /**

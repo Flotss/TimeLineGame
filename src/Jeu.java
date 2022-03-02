@@ -17,15 +17,15 @@ public class Jeu {
      */
     public Jeu(String[] fichier, int tailleMain) {
         this.iniPiochefichier(fichier);
-        this.friseInitialisee();
-        this.tireCarteMainJoueur(tailleMain);
+        this.friseInitialise();
+        this.initialisationMainJoueur(tailleMain);
         this.score = 0;
     }
     
     /**
      * Methode qui initialise la pioche avec un ou plusieurs fichiers
      * 
-     * @param fichier Le tableau de nom de fichier
+     * @param fichier Le tableau des noms de fichiers
      */
     public void iniPiochefichier(String[] fichier) {
         this.pioche = new Paquet();
@@ -40,11 +40,11 @@ public class Jeu {
     }
 
     /**
-     * Tire carte main joueur.
+     * Methode qui initie la Main du Joueur
      *
      * @param taillemain taille de la main
      */
-    public void tireCarteMainJoueur(int taillemain) {
+    public void initialisationMainJoueur(int taillemain) {
         this.joueur = new Paquet();
         for (int i = 0; i < taillemain; i++) {
             Carte ctiree = this.pioche.piocherHasard();
@@ -55,7 +55,7 @@ public class Jeu {
     /**
      * Frise initialisee.
      */
-    public void friseInitialisee() {
+    public void friseInitialise() {
         this.frise = new Frise();
     }
 
@@ -74,6 +74,7 @@ public class Jeu {
         } else {
             possible = this.frise.ajouterCarteDebut(this.joueur.getCarte(placeCarteJoueur));
         }
+
         if (!possible) {
             this.joueur.retirerCarte(placeCarteJoueur);
             this.joueur.ajouterCarteFin(this.pioche.piocherHasard());

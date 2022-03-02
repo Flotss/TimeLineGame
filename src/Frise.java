@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * La classe Frise
  */
@@ -11,6 +13,7 @@ public class Frise {
      */
     public Frise(Carte[] tab) {
         this.frise = tab;
+
         // tri a bulle
         for (int i = 0; i < this.frise.length; i++) {
             for (int j = 0; j < this.frise.length; j++) {
@@ -24,7 +27,7 @@ public class Frise {
             }
         }
 
-        // retourner toutes les cartes
+        // retourner toutes les cartes pour que les cartes pour voir la date
         for (int i = 0; i < this.frise.length; i++) {
             if (!this.frise[i].getRecto())
                 this.frise[i].retournerCarte();
@@ -125,6 +128,8 @@ public class Frise {
      */
     public boolean ajouterCarteDebut(Carte c) {
         boolean inserer = false;
+
+
         // verification que la frise ait au moins une carte
         if (this.getNbCartesFrise() > 0) {
             // verification que la carte existe et que on peut la mettre
@@ -195,13 +200,9 @@ public class Frise {
      * @return La carte a la place p
      */
     public Carte getCarte(int place) {
-        Carte Carte;
-        if (place < this.frise.length && place > -1) {
-            Carte = this.frise[place];
-        } else {
-            Carte = null;
-        }
-        return Carte;
+        return (place < this.frise.length && place > -1)
+                            ? this.frise[place]
+                            : null;
     }
 
     /**
